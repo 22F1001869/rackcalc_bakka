@@ -3,100 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#16a34a" />
+  <meta name="theme-color" content="#3b82f6" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="RackCalc Pro" />
+  <meta name="apple-mobile-web-app-title" content="Bakka Quote" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/icon-192.png" />
-  <title>RackCalc Pro • Bakka Enterprises Edition</title>
+  <title>RackCalc Pro • Bakka Enterprises</title>
   <style>
     :root {
-      --primary: #16a34a; --primary-2: #22c55e; --accent: #0ea5e9; --warning: #f59e0b; --danger: #ef4444;
-      --bg: #f5f7fb; --surface: rgba(255,255,255,0.90); --surface-2: #ffffff; --text: #111827; --muted: #6b7280;
-      --border: rgba(15,23,42,0.08); --shadow: 0 10px 28px rgba(15,23,42,0.08); --shadow-soft: 0 6px 18px rgba(15,23,42,0.06);
-      --radius: 22px; --focus: rgba(22,163,74,0.22); --success-bg: #ecfdf3;
+      --primary:#3b82f6; --primary-2:#60a5fa; --accent:#2563eb; --warning:#f59e0b; --danger:#ef4444;
+      --bg:#f6faff; --surface:rgba(255,255,255,.92); --surface-2:#ffffff; --text:#0f172a; --muted:#64748b;
+      --border:rgba(15,23,42,.08); --shadow:0 8px 22px rgba(59,130,246,.10); --shadow-soft:0 4px 12px rgba(59,130,246,.08);
+      --radius:18px; --focus:rgba(59,130,246,.18); --success-bg:#eff6ff;
     }
     body.dark {
-      --primary: #22c55e; --primary-2: #4ade80; --accent: #38bdf8; --bg: #081018; --surface: rgba(17,24,39,0.90);
-      --surface-2: #101826; --text: #f3f4f6; --muted: #9ca3af; --border: rgba(255,255,255,0.08);
-      --shadow: 0 14px 28px rgba(0,0,0,0.32); --shadow-soft: 0 6px 18px rgba(0,0,0,0.22); --focus: rgba(74,222,128,0.22); --success-bg: #0f2315;
+      --primary:#60a5fa; --primary-2:#93c5fd; --accent:#3b82f6; --bg:#08111f; --surface:rgba(15,23,42,.92); --surface-2:#0f172a;
+      --text:#e5eefc; --muted:#9bb0cf; --border:rgba(255,255,255,.08); --shadow:0 10px 24px rgba(0,0,0,.34); --shadow-soft:0 4px 12px rgba(0,0,0,.24);
+      --focus:rgba(96,165,250,.20); --success-bg:#0d1a33;
     }
-    * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    body { margin: 0; font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif; background: radial-gradient(circle at top left, rgba(34,197,94,0.08), transparent 28%), radial-gradient(circle at top right, rgba(14,165,233,0.06), transparent 26%), var(--bg); color: var(--text); min-height: 100vh; transition: background-color .2s ease, color .2s ease; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
-    .app { max-width: 700px; margin: 0 auto; padding: 12px 14px 28px; }
-    .hero { position: sticky; top: 0; z-index: 20; margin: 0 -14px 14px; padding: calc(14px + env(safe-area-inset-top)) 14px 14px; background: linear-gradient(145deg, var(--primary), var(--primary-2)); color: #fff; border-radius: 0 0 24px 24px; box-shadow: var(--shadow-soft); backdrop-filter: blur(12px); }
-    .hero-row { display:flex; justify-content:space-between; align-items:center; gap:12px; }
-    .hero h1 { margin:0; font-size:22px; line-height:1.1; font-weight:900; }
-    .hero p { margin:6px 0 0; font-size:13px; opacity:.93; }
+    * { box-sizing:border-box; }
+    html { -webkit-text-size-adjust:100%; }
+    body {
+      margin:0; font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(circle at top left, rgba(96,165,250,.12), transparent 28%), radial-gradient(circle at top right, rgba(59,130,246,.08), transparent 22%), var(--bg);
+      color:var(--text); min-height:100vh; padding-bottom:max(24px, env(safe-area-inset-bottom));
+    }
+    .app { max-width:650px; margin:0 auto; padding:10px 12px 24px; }
+    .hero {
+      position:sticky; top:0; z-index:20; margin:0 -12px 12px; padding:calc(12px + env(safe-area-inset-top)) 12px 12px;
+      background:linear-gradient(145deg, var(--primary), var(--primary-2)); color:#fff; border-radius:0 0 20px 20px; box-shadow:var(--shadow-soft);
+    }
+    .hero-row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    .hero h1 { margin:0; font-size:20px; line-height:1.1; font-weight:900; }
+    .hero p { margin:5px 0 0; font-size:12px; opacity:.95; }
     .hero-actions { display:flex; gap:8px; }
-    .icon-btn { width:44px; height:44px; border:none; border-radius:50%; cursor:pointer; background: rgba(255,255,255,.18); color:#fff; display:grid; place-items:center; font-size:18px; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; margin-bottom: 14px; backdrop-filter: blur(14px); }
-    .section-title { margin:0 0 12px; font-size:16px; font-weight:900; }
-    .mini { font-size:12px; color: var(--muted); }
-    .grid { display:grid; grid-template-columns:1fr; gap:12px; }
-    @media (min-width: 520px) { .grid.two { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 760px) { .grid.three { grid-template-columns: 1fr 1fr 1fr; } }
-    label { display:block; margin-bottom:7px; font-size:13px; font-weight:700; color:var(--muted); }
-    input[type="text"], input[type="tel"], input[type="number"], select, textarea { width:100%; min-height:50px; padding:12px 14px; border-radius:14px; border:1px solid var(--border); background: var(--surface-2); color: var(--text); font-size:16px; outline:none; }
-    textarea { min-height: 92px; resize: vertical; }
-    input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--focus); }
-    .toggle-row { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:50px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background: var(--surface-2); }
-    .toggle-row strong { font-size:14px; }
-    .toggle-row small { display:block; color:var(--muted); margin-top:2px; }
-    .switch { position:relative; width:52px; height:30px; }
+    .icon-btn { width:40px; height:40px; border:none; border-radius:50%; cursor:pointer; background:rgba(255,255,255,.18); color:#fff; display:grid; place-items:center; font-size:17px; }
+
+    .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px; margin-bottom:12px; backdrop-filter:blur(10px); }
+    .section-title { margin:0 0 10px; font-size:15px; font-weight:900; }
+    .mini { font-size:11px; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:1fr; gap:10px; }
+    @media (min-width:520px){ .grid.two { grid-template-columns:1fr 1fr; } }
+    @media (min-width:760px){ .grid.three { grid-template-columns:1fr 1fr 1fr; } }
+
+    label { display:block; margin-bottom:6px; font-size:12px; font-weight:800; color:var(--muted); }
+    input[type="text"], input[type="tel"], input[type="number"], select, textarea {
+      width:100%; min-height:46px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:15px; outline:none;
+    }
+    textarea { min-height:86px; resize:vertical; }
+    input:focus, select:focus, textarea:focus { border-color:var(--primary); box-shadow:0 0 0 4px var(--focus); }
+
+    .toggle-row { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:48px; padding:9px 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); }
+    .toggle-row strong { font-size:13px; }
+    .toggle-row small { display:block; color:var(--muted); margin-top:2px; font-size:11px; }
+    .switch { position:relative; width:48px; height:28px; }
     .switch input { display:none; }
     .slider { position:absolute; inset:0; background:#cbd5e1; border-radius:999px; transition:.18s ease; }
-    .slider::before { content:""; position:absolute; width:24px; height:24px; left:3px; top:3px; background:#fff; border-radius:50%; transition:.18s ease; box-shadow:0 1px 4px rgba(0,0,0,.2); }
-    .switch input:checked + .slider { background: linear-gradient(145deg, var(--primary), var(--primary-2)); }
-    .switch input:checked + .slider::before { transform: translateX(22px); }
-    .btn-row { display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:14px; }
-    .btn-row.four { grid-template-columns: 1fr 1fr; }
-    @media (min-width: 580px) { .btn-row.four { grid-template-columns: 1fr 1fr 1fr 1fr; } }
-    button { min-height:50px; border:none; border-radius:14px; cursor:pointer; padding:0 14px; font-size:15px; font-weight:900; letter-spacing:.12px; }
-    button:active { transform: translateY(1px); }
-    .btn-primary { color:#fff; background: linear-gradient(145deg, var(--primary), var(--primary-2)); box-shadow: 0 10px 18px rgba(22,163,74,.22); }
-    .btn-secondary { color: var(--text); background: rgba(148,163,184,.14); border:1px solid var(--border); }
-    .btn-accent { color:#fff; background: linear-gradient(145deg, #0ea5e9, #38bdf8); box-shadow: 0 10px 18px rgba(14,165,233,.22); }
-    .btn-danger { color:#fff; background: linear-gradient(145deg, #ef4444, #f87171); box-shadow: 0 10px 18px rgba(239,68,68,.22); }
-    .btn-warning { color:#fff; background: linear-gradient(145deg, #f59e0b, #fbbf24); box-shadow: 0 10px 18px rgba(245,158,11,.22); }
-    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top: 6px; }
-    .chip { font-size:12px; color:var(--muted); background: rgba(148,163,184,.12); border:1px solid var(--border); border-radius:999px; padding:6px 10px; }
-    .result { background: linear-gradient(180deg, var(--success-bg), rgba(255,255,255,0.04)); border:1px solid rgba(34,197,94,.2); border-radius: var(--radius); padding:16px; box-shadow: var(--shadow-soft); }
-    .placeholder { text-align:center; color:var(--muted); padding:8px 4px; line-height:1.6; }
-    .result-title { margin-bottom:10px; font-size:15px; font-weight:900; }
-    .line { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px dashed rgba(148,163,184,.24); font-size:14px; }
-    .line:last-of-type { border-bottom: 0; }
-    .label { color: var(--muted); } .value { white-space: nowrap; font-weight:900; }
-    .total { margin-top:12px; padding-top:12px; border-top:2px dashed rgba(34,197,94,.35); text-align:center; }
-    .total .caption { font-size:12px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.3px; margin-bottom:4px; }
-    .total .amount { color:var(--primary); font-size:31px; font-weight:900; line-height:1; }
-    .quote-preview { background: var(--surface-2); border:1px dashed rgba(148,163,184,.36); border-radius:16px; padding:14px; }
-    .quote-header { display:flex; justify-content:space-between; gap:12px; margin-bottom:10px; }
-    .quote-header h3 { margin:0; font-size:16px; }
-    .quote-meta { color: var(--muted); font-size:12px; }
-    .quote-customer { margin-bottom: 10px; font-size:14px; }
-    .list { display:grid; gap:10px; }
-    .item-card { background: var(--surface-2); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:14px; padding:12px; }
-    .item-card strong { display:block; margin-bottom:4px; }
-    .item-card small { color:var(--muted); }
-    .item-actions { display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
-    .item-actions button { min-height:38px; font-size:13px; padding:0 10px; }
-    .modal { position: fixed; inset: 0; background: rgba(0,0,0,.42); display:none; align-items:flex-end; z-index:60; }
+    .slider::before { content:""; position:absolute; width:22px; height:22px; left:3px; top:3px; border-radius:50%; background:#fff; transition:.18s ease; box-shadow:0 1px 4px rgba(0,0,0,.2); }
+    .switch input:checked + .slider { background:linear-gradient(145deg,var(--primary),var(--primary-2)); }
+    .switch input:checked + .slider::before { transform:translateX(20px); }
+
+    .btn-row { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:12px; }
+    .btn-row.three { grid-template-columns:1fr 1fr; }
+    @media (min-width:580px){ .btn-row.three { grid-template-columns:1fr 1fr 1fr; } }
+    button { min-height:46px; border:none; border-radius:12px; cursor:pointer; padding:0 12px; font-size:14px; font-weight:900; letter-spacing:.08px; }
+    button:active { transform:translateY(1px); }
+    .btn-primary { color:#fff; background:linear-gradient(145deg,var(--primary),var(--primary-2)); box-shadow:0 8px 16px rgba(59,130,246,.22); }
+    .btn-secondary { color:var(--text); background:rgba(148,163,184,.12); border:1px solid var(--border); }
+    .btn-accent { color:#fff; background:linear-gradient(145deg,#2563eb,#60a5fa); box-shadow:0 8px 16px rgba(37,99,235,.22); }
+    .btn-danger { color:#fff; background:linear-gradient(145deg,#ef4444,#f87171); box-shadow:0 8px 16px rgba(239,68,68,.22); }
+    .btn-warning { color:#fff; background:linear-gradient(145deg,#f59e0b,#fbbf24); box-shadow:0 8px 16px rgba(245,158,11,.22); }
+
+    .result { background:linear-gradient(180deg,var(--success-bg),rgba(255,255,255,.04)); border:1px solid rgba(96,165,250,.28); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow-soft); }
+    .placeholder { text-align:center; color:var(--muted); padding:8px 4px; line-height:1.55; font-size:14px; }
+    .result-title { margin-bottom:8px; font-size:14px; font-weight:900; }
+    .line { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; padding:8px 0; border-bottom:1px dashed rgba(148,163,184,.24); font-size:13px; }
+    .line:last-of-type { border-bottom:0; }
+    .label { color:var(--muted); } .value { white-space:nowrap; font-weight:900; }
+    .total { margin-top:10px; padding-top:10px; border-top:2px dashed rgba(96,165,250,.35); text-align:center; }
+    .total .caption { font-size:11px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.3px; margin-bottom:4px; }
+    .total .amount { color:var(--primary); font-size:28px; font-weight:900; line-height:1; }
+
+    .quote-preview { background:var(--surface-2); border:1px dashed rgba(148,163,184,.36); border-radius:14px; padding:12px; }
+    .quote-header { display:flex; justify-content:space-between; gap:12px; margin-bottom:8px; }
+    .quote-header h3 { margin:0; font-size:15px; }
+    .quote-meta { color:var(--muted); font-size:11px; }
+    .quote-customer { margin-bottom:8px; font-size:13px; }
+
+    .list { display:grid; gap:9px; }
+    .item-card { background:var(--surface-2); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:11px; }
+    .item-card strong { display:block; margin-bottom:3px; font-size:13px; }
+    .item-card small { color:var(--muted); font-size:11px; }
+    .item-actions { display:flex; flex-wrap:wrap; gap:7px; margin-top:9px; }
+    .item-actions button { min-height:34px; font-size:12px; padding:0 9px; }
+
+    .modal { position:fixed; inset:0; background:rgba(0,0,0,.42); display:none; align-items:flex-end; z-index:60; }
     .modal.show { display:flex; }
-    .modal-sheet { width:100%; max-height: 88vh; overflow:auto; background: var(--bg); border-radius: 24px 24px 0 0; padding: 14px 14px 22px; box-shadow: 0 -12px 30px rgba(0,0,0,.22); }
+    .modal-sheet { width:100%; max-height:90vh; overflow:auto; background:var(--bg); border-radius:22px 22px 0 0; padding:14px 12px 20px; box-shadow:0 -12px 30px rgba(0,0,0,.22); }
     .tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
-    .tab-btn { min-height:40px; padding:0 12px; font-size:13px; border-radius:999px; }
-    .tab-btn.active { background: linear-gradient(145deg, var(--primary), var(--primary-2)); color:#fff; }
+    .tab-btn { min-height:38px; padding:0 11px; font-size:12px; border-radius:999px; }
+    .tab-btn.active { background:linear-gradient(145deg,var(--primary),var(--primary-2)); color:#fff; }
     .tab-panel { display:none; } .tab-panel.active { display:block; }
-    .table-wrap { overflow:auto; border:1px solid var(--border); border-radius: 16px; }
-    table { width:100%; border-collapse: collapse; min-width: 420px; background: var(--surface-2); }
-    th, td { padding: 10px; border-bottom:1px solid var(--border); text-align:left; font-size:14px; } th { color: var(--muted); font-weight:800; } td input { min-height:42px; font-size:14px; padding:8px 10px; }
-    .footer-note { text-align:center; color:var(--muted); font-size:12px; margin-top: 12px; }
-    .toast { position: fixed; left:50%; bottom:20px; transform: translateX(-50%) translateY(18px); opacity:0; pointer-events:none; background: rgba(17,24,39,.96); color:#fff; padding:12px 14px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,.26); z-index:80; transition:.18s ease; font-size:14px; }
-    .toast.show { opacity:1; transform: translateX(-50%) translateY(0); }
-    @media print { body { background:#fff !important; color:#000 !important; } .hero, .no-print, .footer-note, .modal, #quotesCard, #savedQuotesCard { display:none !important; } .app { max-width:100%; padding:0; } .card, .result, .quote-preview { background:#fff !important; box-shadow:none !important; border:1px solid #ddd !important; } }
+
+    .table-wrap { overflow:auto; border:1px solid var(--border); border-radius:14px; }
+    table { width:100%; border-collapse:collapse; min-width:420px; background:var(--surface-2); table-layout:fixed; }
+    th, td { padding:8px; border-bottom:1px solid var(--border); text-align:left; font-size:13px; }
+    th { color:var(--muted); font-weight:800; }
+    td:first-child, th:first-child { width:92px; }
+    td input { min-height:38px; font-size:13px; padding:7px 8px; width:100%; min-width:68px; }
+    .num-input { min-width:68px !important; text-align:center; }
+
+    .footer-note { text-align:center; color:var(--muted); font-size:11px; margin-top:10px; }
+    .toast { position:fixed; left:50%; bottom:18px; transform:translateX(-50%) translateY(18px); opacity:0; pointer-events:none; background:rgba(15,23,42,.96); color:#fff; padding:10px 12px; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,.26); z-index:80; transition:.18s ease; font-size:13px; }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+    @media (max-width:420px){
+      .hero h1 { font-size:18px; }
+      .hero p { font-size:11px; }
+      .card { padding:12px; }
+      .quote-header { flex-direction:column; gap:6px; }
+      .line { font-size:12.5px; }
+      td, th { padding:7px 6px; }
+      td input { min-width:60px; font-size:12px; }
+    }
+    @media print { body { background:#fff !important; color:#000 !important; } .hero,.no-print,.footer-note,.modal,#quotesCard,#savedQuotesCard{ display:none !important; } .app{ max-width:100%; padding:0; } .card,.result,.quote-preview { background:#fff !important; box-shadow:none !important; border:1px solid #ddd !important; } }
   </style>
 </head>
 <body>
@@ -105,7 +136,7 @@
       <div class="hero-row">
         <div>
           <h1>RackCalc Pro</h1>
-          <p>Bakka Enterprises Edition • Labour and transport excluded from GST base</p>
+          <p>Bakka Enterprises Edition • Compact blue mobile version</p>
         </div>
         <div class="hero-actions">
           <button class="icon-btn" id="installBtn" title="Install app">⬇️</button>
@@ -169,16 +200,14 @@
       </div>
       <div class="grid two">
         <div><label for="gstPercent">GST Rate (%)</label><input type="number" id="gstPercent" value="18" min="0" inputmode="decimal" /></div>
-        <div class="toggle-row"><div><strong>Apply GST</strong><small>GST only on material amount after discount</small></div><label class="switch"><input type="checkbox" id="gstEnabled" checked><span class="slider"></span></label></div>
+        <div class="toggle-row"><div><strong>Apply GST</strong><small>GST only on materials after discount</small></div><label class="switch"><input type="checkbox" id="gstEnabled" checked><span class="slider"></span></label></div>
       </div>
       <div class="grid two">
         <div class="toggle-row"><div><strong>Auto Calculate</strong><small>Recalculates as you type</small></div><label class="switch"><input type="checkbox" id="autoCalc" checked><span class="slider"></span></label></div>
-        <div class="toggle-row"><div><strong>GST Exclusion Rule</strong><small>Labour & transport stay outside GST base</small></div><label class="switch"><input type="checkbox" checked disabled><span class="slider"></span></label></div>
       </div>
-      <div class="chips no-print"><span class="chip">No profit / margin field</span><span class="chip">Labour excluded from GST</span><span class="chip">Transport excluded from GST</span><span class="chip">Bakka Enterprises</span></div>
       <div class="btn-row no-print"><button class="btn-primary" id="calcBtn">Calculate</button><button class="btn-secondary" id="resetBtn">Reset</button></div>
-      <div class="btn-row four no-print"><button class="btn-accent" id="shareBtn">Share</button><button class="btn-accent" id="waBtn">WhatsApp</button><button class="btn-warning" id="saveQuoteBtn">Save Quote</button><button class="btn-secondary" id="printBtn">Print</button></div>
-      <div class="btn-row four no-print"><button class="btn-primary" id="pdfBtn">Beautiful PDF</button><button class="btn-secondary" id="quotesBtn">Saved Quotes</button><button class="btn-danger" id="clearQuotesBtn">Clear Quotes</button><button class="btn-secondary" id="historyBtn">History</button></div>
+      <div class="btn-row three no-print"><button class="btn-accent" id="shareBtn">Share</button><button class="btn-warning" id="saveQuoteBtn">Save Quote</button><button class="btn-primary" id="pdfBtn">Share / Download PDF</button></div>
+      <div class="btn-row no-print"><button class="btn-secondary" id="quotesBtn">Saved Quotes</button><button class="btn-danger" id="clearQuotesBtn">Clear Quotes</button></div>
     </section>
 
     <section class="result" id="result"><div class="placeholder">Fill the details and tap <strong>Calculate</strong> to see the price.</div></section>
@@ -190,8 +219,7 @@
     </section>
 
     <section class="card" id="quotesCard" style="display:none;"><h2 class="section-title">Saved Quotations</h2><div class="list" id="quotesList"></div></section>
-    <section class="card" id="savedQuotesCard" style="display:none;"><h2 class="section-title">Recent Calculations</h2><div class="list" id="historyList"></div></section>
-    <div class="footer-note">Saved only on this device • Bakka Enterprises branded edition</div>
+    <div class="footer-note">Saved only on this device • Bakka Enterprises compact blue edition</div>
   </div>
 
   <div class="modal" id="adminModal">
@@ -238,7 +266,7 @@
     const defaults = { customerName:'', customerPhone:'', quoteNotes:'', plate:'24x06', gauge:'M', qty:'1', angle:'36', angleft:'10', nutbolt:'150', lpatti:'8', rubber:'4', discountPercent:'0', labourCost:'0', transportCost:'0', gstPercent:'18', gstEnabled:'true', autoCalc:'true' };
     const fields = ['customerName','customerPhone','quoteNotes','plate','gauge','qty','angle','angleft','nutbolt','lpatti','rubber','discountPercent','labourCost','transportCost','gstPercent'];
     const $ = (id) => document.getElementById(id);
-    const refs = { customerName:$('customerName'), customerPhone:$('customerPhone'), quoteNotes:$('quoteNotes'), quoteSearch:$('quoteSearch'), plate:$('plate'), gauge:$('gauge'), qty:$('qty'), angle:$('angle'), angleft:$('angleft'), nutbolt:$('nutbolt'), lpatti:$('lpatti'), rubber:$('rubber'), discountPercent:$('discountPercent'), labourCost:$('labourCost'), transportCost:$('transportCost'), gstPercent:$('gstPercent'), gstEnabled:$('gstEnabled'), autoCalc:$('autoCalc'), calcBtn:$('calcBtn'), resetBtn:$('resetBtn'), shareBtn:$('shareBtn'), waBtn:$('waBtn'), saveQuoteBtn:$('saveQuoteBtn'), printBtn:$('printBtn'), pdfBtn:$('pdfBtn'), quotesBtn:$('quotesBtn'), clearQuotesBtn:$('clearQuotesBtn'), historyBtn:$('historyBtn'), result:$('result'), quoteDate:$('quoteDate'), quoteId:$('quoteId'), quoteCustomer:$('quoteCustomer'), companyNamePreview:$('companyNamePreview'), quoteFooterPreview:$('quoteFooterPreview'), quotesCard:$('quotesCard'), quotesList:$('quotesList'), savedQuotesCard:$('savedQuotesCard'), historyList:$('historyList'), adminModalTrigger:$('adminModalTrigger'), adminModal:$('adminModal'), closeAdminBtn:$('closeAdminBtn'), adminCloseBtn:$('adminCloseBtn'), saveAdminBtn:$('saveAdminBtn'), priceTableBody:$('priceTableBody'), ratesTableBody:$('ratesTableBody'), addPlateBtn:$('addPlateBtn'), resetPricesBtn:$('resetPricesBtn'), brandName:$('brandName'), footerText:$('footerText'), companyPhone:$('companyPhone'), adminPin:$('adminPin'), exportBackupBtn:$('exportBackupBtn'), restoreBackupBtn:$('restoreBackupBtn'), backupData:$('backupData'), installBtn:$('installBtn'), darkToggle:$('darkToggle'), toast:$('toast') };
+    const refs = { customerName:$('customerName'), customerPhone:$('customerPhone'), quoteNotes:$('quoteNotes'), quoteSearch:$('quoteSearch'), plate:$('plate'), gauge:$('gauge'), qty:$('qty'), angle:$('angle'), angleft:$('angleft'), nutbolt:$('nutbolt'), lpatti:$('lpatti'), rubber:$('rubber'), discountPercent:$('discountPercent'), labourCost:$('labourCost'), transportCost:$('transportCost'), gstPercent:$('gstPercent'), gstEnabled:$('gstEnabled'), autoCalc:$('autoCalc'), calcBtn:$('calcBtn'), resetBtn:$('resetBtn'), shareBtn:$('shareBtn'), saveQuoteBtn:$('saveQuoteBtn'), pdfBtn:$('pdfBtn'), quotesBtn:$('quotesBtn'), clearQuotesBtn:$('clearQuotesBtn'), result:$('result'), quoteDate:$('quoteDate'), quoteId:$('quoteId'), quoteCustomer:$('quoteCustomer'), companyNamePreview:$('companyNamePreview'), quoteFooterPreview:$('quoteFooterPreview'), quotesCard:$('quotesCard'), quotesList:$('quotesList'), adminModalTrigger:$('adminModalTrigger'), adminModal:$('adminModal'), closeAdminBtn:$('closeAdminBtn'), adminCloseBtn:$('adminCloseBtn'), saveAdminBtn:$('saveAdminBtn'), priceTableBody:$('priceTableBody'), ratesTableBody:$('ratesTableBody'), addPlateBtn:$('addPlateBtn'), resetPricesBtn:$('resetPricesBtn'), brandName:$('brandName'), footerText:$('footerText'), companyPhone:$('companyPhone'), adminPin:$('adminPin'), exportBackupBtn:$('exportBackupBtn'), restoreBackupBtn:$('restoreBackupBtn'), backupData:$('backupData'), installBtn:$('installBtn'), darkToggle:$('darkToggle'), toast:$('toast') };
     const currency = new Intl.NumberFormat('en-IN', { style:'currency', currency:'INR', maximumFractionDigits:0 });
     let appSettings = null, lastCalculation = null, toastTimer = null, deferredPrompt = null;
 
@@ -246,21 +274,20 @@
     function persist(key, value){ localStorage.setItem(key, value); }
     function toSafeNumber(value, min = 0, fallback = 0){ const num = Number(value); if(!Number.isFinite(num)) return fallback; return Math.max(min, num); }
     function clone(obj){ return JSON.parse(JSON.stringify(obj)); }
-
     function loadSettings(){ try { appSettings = JSON.parse(localStorage.getItem('rackcalc_settings')) || clone(defaultSettings); } catch(e){ appSettings = clone(defaultSettings); } if(!appSettings.priceDB || !appSettings.rates || !appSettings.branding) appSettings = clone(defaultSettings); }
     function saveSettings(){ localStorage.setItem('rackcalc_settings', JSON.stringify(appSettings)); }
     function populatePlateOptions(){ const current = refs.plate.value || defaults.plate; refs.plate.innerHTML = Object.keys(appSettings.priceDB).map(size => `<option value="${size}">${size.replace('x','×')}</option>`).join(''); refs.plate.value = appSettings.priceDB[current] ? current : Object.keys(appSettings.priceDB)[0]; }
     function populateAngleOptions(){ const current = refs.angle.value || defaults.angle; refs.angle.innerHTML = appSettings.rates.angleOptions.map(opt => `<option value="${opt.value}">${opt.label}</option>`).join(''); refs.angle.value = appSettings.rates.angleOptions.some(opt => String(opt.value) === String(current)) ? String(current) : String(appSettings.rates.angleOptions[0].value); }
 
     function renderAdminTables(){
-      refs.priceTableBody.innerHTML = Object.entries(appSettings.priceDB).map(([plate, prices]) => `\n<tr><td><input data-kind="plate-key" value="${plate}" /></td><td><input type="number" data-gauge="M" value="${prices.M}" /></td><td><input type="number" data-gauge="H" value="${prices.H}" /></td><td><input type="number" data-gauge="FH" value="${prices.FH}" /></td></tr>`).join('');
+      refs.priceTableBody.innerHTML = Object.entries(appSettings.priceDB).map(([plate, prices]) => `\n<tr><td><input data-kind="plate-key" value="${plate}" /></td><td><input class="num-input" type="number" data-gauge="M" value="${prices.M}" /></td><td><input class="num-input" type="number" data-gauge="H" value="${prices.H}" /></td><td><input class="num-input" type="number" data-gauge="FH" value="${prices.FH}" /></td></tr>`).join('');
       const rows = [
         { key:'nutboltRate', label:'Nut Bolt Rate', type:'number', value:appSettings.rates.nutboltRate },
         { key:'lpattiRate', label:'L Patti Rate', type:'number', value:appSettings.rates.lpattiRate },
         { key:'rubberRate', label:'Rubber Rate', type:'number', value:appSettings.rates.rubberRate }
       ];
       appSettings.rates.angleOptions.forEach((opt, idx) => { rows.push({ key:`angleLabel:${idx}`, label:`Angle Option ${idx+1} Label`, type:'text', value:opt.label }); rows.push({ key:`angleValue:${idx}`, label:`Angle Option ${idx+1} Value`, type:'number', value:opt.value }); });
-      refs.ratesTableBody.innerHTML = rows.map(row => `<tr><td>${row.label}</td><td>${row.type==='text'?'Text':'Number'}</td><td><input type="${row.type}" data-kind="rate" data-key="${row.key}" value="${row.value}" /></td></tr>`).join('');
+      refs.ratesTableBody.innerHTML = rows.map(row => `<tr><td>${row.label}</td><td>${row.type==='text'?'Text':'Number'}</td><td><input class="${row.type==='number' ? 'num-input' : ''}" type="${row.type}" data-kind="rate" data-key="${row.key}" value="${row.value}" /></td></tr>`).join('');
       refs.brandName.value = appSettings.branding.brandName || ''; refs.footerText.value = appSettings.branding.footerText || ''; refs.companyPhone.value = appSettings.branding.companyPhone || ''; refs.adminPin.value = appSettings.branding.adminPin || '';
     }
     function openAdminModal(){ const pin = appSettings.branding.adminPin; if(pin){ const entered = prompt('Enter Admin PIN'); if(entered===null) return; if(String(entered)!==String(pin)){ showToast('Incorrect PIN'); return; } } renderAdminTables(); refs.adminModal.classList.add('show'); }
@@ -279,19 +306,19 @@
 
     function loadPersistedValues(){ fields.forEach(id => { const saved = localStorage.getItem(id); if(saved!==null) refs[id].value = saved; else refs[id].value = defaults[id]; }); refs.gstEnabled.checked = (localStorage.getItem('gstEnabled') ?? defaults.gstEnabled) === 'true'; refs.autoCalc.checked = (localStorage.getItem('autoCalc') ?? defaults.autoCalc) === 'true'; const dark = localStorage.getItem('darkMode')==='true'; document.body.classList.toggle('dark', dark); refs.darkToggle.textContent = dark ? '☀️' : '🌙'; }
     function updateQuoteMeta(quoteId = null){ const now = new Date(); refs.quoteDate.textContent = now.toLocaleString('en-IN'); refs.quoteId.textContent = quoteId || ('QT-'+now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'-'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0')); const name = refs.customerName.value.trim() || '—'; const phone = refs.customerPhone.value.trim(); refs.quoteCustomer.textContent = 'Customer: ' + name + (phone ? ' • ' + phone : ''); refs.companyNamePreview.textContent = appSettings.branding.brandName || 'Bakka Enterprises'; refs.quoteFooterPreview.textContent = [appSettings.branding.footerText, appSettings.branding.companyPhone ? 'Phone: ' + appSettings.branding.companyPhone : ''].filter(Boolean).join(' • '); }
-
     function getValues(){ return { customerName: refs.customerName.value.trim(), customerPhone: refs.customerPhone.value.trim(), quoteNotes: refs.quoteNotes.value.trim(), quoteId: refs.quoteId.textContent, plate: refs.plate.value, gauge: refs.gauge.value, qty: toSafeNumber(refs.qty.value,1,1), angleRate: toSafeNumber(refs.angle.value,0,0), angleft: toSafeNumber(refs.angleft.value,0,0), nutbolt: toSafeNumber(refs.nutbolt.value,0,0), lpatti: toSafeNumber(refs.lpatti.value,0,0), rubber: toSafeNumber(refs.rubber.value,0,0), discountPercent: toSafeNumber(refs.discountPercent.value,0,0), labourCost: toSafeNumber(refs.labourCost.value,0,0), transportCost: toSafeNumber(refs.transportCost.value,0,0), gstPercent: toSafeNumber(refs.gstPercent.value,0,0), gstEnabled: refs.gstEnabled.checked }; }
-    function compute(v){ const plateRate = appSettings.priceDB[v.plate]?.[v.gauge] ?? 0; const plateTotal = Math.round(plateRate * v.qty); const angleTotal = Math.round(v.angleRate * v.angleft); const nutboltTotal = Math.round(v.nutbolt * appSettings.rates.nutboltRate); const lpattiTotal = Math.round(v.lpatti * appSettings.rates.lpattiRate); const rubberTotal = Math.round(v.rubber * appSettings.rates.rubberRate); const materialSubtotal = plateTotal + angleTotal + nutboltTotal + lpattiTotal + rubberTotal; const discountAmount = Math.round(materialSubtotal * (v.discountPercent/100)); const taxableMaterialValue = materialSubtotal - discountAmount; const gstAmount = v.gstEnabled ? Math.round(taxableMaterialValue * (v.gstPercent/100)) : 0; const serviceAndLogisticsTotal = v.labourCost + v.transportCost; const grandTotal = taxableMaterialValue + gstAmount + serviceAndLogisticsTotal; return { ...v, plateRate, plateTotal, angleTotal, nutboltTotal, lpattiTotal, rubberTotal, materialSubtotal, discountAmount, taxableMaterialValue, gstAmount, serviceAndLogisticsTotal, grandTotal }; }
-    function renderResult(calc){ refs.result.innerHTML = `\n<div class="result-title">Calculation Breakdown</div><div class="line"><span class="label">Plate (${calc.qty} × ${currency.format(calc.plateRate)})</span><span class="value">${currency.format(calc.plateTotal)}</span></div><div class="line"><span class="label">Angle (${calc.angleft} ft × ${currency.format(calc.angleRate)})</span><span class="value">${currency.format(calc.angleTotal)}</span></div><div class="line"><span class="label">Nut Bolt (${calc.nutbolt} × ${currency.format(appSettings.rates.nutboltRate)})</span><span class="value">${currency.format(calc.nutboltTotal)}</span></div><div class="line"><span class="label">L Patti (${calc.lpatti} × ${currency.format(appSettings.rates.lpattiRate)})</span><span class="value">${currency.format(calc.lpattiTotal)}</span></div><div class="line"><span class="label">Rubber (${calc.rubber} × ${currency.format(appSettings.rates.rubberRate)})</span><span class="value">${currency.format(calc.rubberTotal)}</span></div><div class="line"><span class="label"><strong>Material Subtotal</strong></span><span class="value">${currency.format(calc.materialSubtotal)}</span></div><div class="line"><span class="label">Discount (${calc.discountPercent}%)</span><span class="value">- ${currency.format(calc.discountAmount)}</span></div><div class="line"><span class="label">GST Base (materials only)</span><span class="value">${currency.format(calc.taxableMaterialValue)}</span></div><div class="line"><span class="label">GST ${calc.gstEnabled ? '('+calc.gstPercent+'%)' : '(Off)'}</span><span class="value">${currency.format(calc.gstAmount)}</span></div><div class="line"><span class="label">Labour Cost (no GST)</span><span class="value">${currency.format(calc.labourCost)}</span></div><div class="line"><span class="label">Transport Cost (no GST)</span><span class="value">${currency.format(calc.transportCost)}</span></div><div class="total"><div class="caption">Grand Total</div><div class="amount">${currency.format(calc.grandTotal)}</div></div>`; }
+    function compute(v){ const plateRate = appSettings.priceDB[v.plate]?.[v.gauge] ?? 0; const plateTotal = Math.round(plateRate * v.qty); const angleTotal = Math.round(v.angleRate * v.angleft); const nutboltTotal = Math.round(v.nutbolt * appSettings.rates.nutboltRate); const lpattiTotal = Math.round(v.lpatti * appSettings.rates.lpattiRate); const rubberTotal = Math.round(v.rubber * appSettings.rates.rubberRate); const materialSubtotal = plateTotal + angleTotal + nutboltTotal + lpattiTotal + rubberTotal; const discountAmount = Math.round(materialSubtotal * (v.discountPercent/100)); const taxableMaterialValue = materialSubtotal - discountAmount; const gstAmount = v.gstEnabled ? Math.round(taxableMaterialValue * (v.gstPercent/100)) : 0; const grandTotal = taxableMaterialValue + gstAmount + v.labourCost + v.transportCost; return { ...v, plateRate, plateTotal, angleTotal, nutboltTotal, lpattiTotal, rubberTotal, materialSubtotal, discountAmount, taxableMaterialValue, gstAmount, grandTotal }; }
+    function renderResult(calc){ refs.result.innerHTML = `\n<div class="result-title">Calculation Breakdown</div><div class="line"><span class="label">Plate (${calc.qty} × ${currency.format(calc.plateRate)})</span><span class="value">${currency.format(calc.plateTotal)}</span></div><div class="line"><span class="label">Angle (${calc.angleft} ft × ${currency.format(calc.angleRate)})</span><span class="value">${currency.format(calc.angleTotal)}</span></div><div class="line"><span class="label">Nut Bolt (${calc.nutbolt} × ${currency.format(appSettings.rates.nutboltRate)})</span><span class="value">${currency.format(calc.nutboltTotal)}</span></div><div class="line"><span class="label">L Patti (${calc.lpatti} × ${currency.format(appSettings.rates.lpattiRate)})</span><span class="value">${currency.format(calc.lpattiTotal)}</span></div><div class="line"><span class="label">Rubber (${calc.rubber} × ${currency.format(appSettings.rates.rubberRate)})</span><span class="value">${currency.format(calc.rubberTotal)}</span></div><div class="line"><span class="label"><strong>Material Subtotal</strong></span><span class="value">${currency.format(calc.materialSubtotal)}</span></div><div class="line"><span class="label">Discount (${calc.discountPercent}%)</span><span class="value">- ${currency.format(calc.discountAmount)}</span></div><div class="line"><span class="label">GST Base (materials only)</span><span class="value">${currency.format(calc.taxableMaterialValue)}</span></div><div class="line"><span class="label">GST ${calc.gstEnabled ? '('+calc.gstPercent+'%)' : '(Off)'}</span><span class="value">${currency.format(calc.gstAmount)}</span></div><div class="line"><span class="label">Labour Cost</span><span class="value">${currency.format(calc.labourCost)}</span></div><div class="line"><span class="label">Transport Cost</span><span class="value">${currency.format(calc.transportCost)}</span></div><div class="total"><div class="caption">Grand Total</div><div class="amount">${currency.format(calc.grandTotal)}</div></div>`; }
     function calculate(saveHistory = true){ updateQuoteMeta(); const calc = compute(getValues()); renderResult(calc); lastCalculation = calc; if(saveHistory) saveToHistory(calc); return calc; }
     function maybeAutoCalculate(){ updateQuoteMeta(); if(refs.autoCalc.checked) calculate(false); }
-    function saveToHistory(calc){ let history = JSON.parse(localStorage.getItem('calcHistory') || '[]'); history.unshift({ date:new Date().toLocaleString('en-IN'), summary:`₹${calc.grandTotal} | ${calc.plate} ${calc.gauge} × ${calc.qty}`, customer:calc.customerName || 'Walk-in Customer' }); if(history.length>10) history = history.slice(0,10); localStorage.setItem('calcHistory', JSON.stringify(history)); renderHistory(); }
-    function renderHistory(){ const history = JSON.parse(localStorage.getItem('calcHistory') || '[]'); refs.historyList.innerHTML = history.length ? history.map(item => `<div class="item-card"><strong>${item.summary}</strong><small>${item.customer} • ${item.date}</small></div>`).join('') : '<div class="item-card"><strong>No recent calculations.</strong><small>New calculations will appear here.</small></div>'; }
+    function saveToHistory(calc){ let history = JSON.parse(localStorage.getItem('calcHistory') || '[]'); history.unshift({ date:new Date().toLocaleString('en-IN'), summary:`₹${calc.grandTotal} | ${calc.plate} ${calc.gauge} × ${calc.qty}`, customer:calc.customerName || 'Walk-in Customer' }); if(history.length>10) history = history.slice(0,10); localStorage.setItem('calcHistory', JSON.stringify(history)); }
+
     function saveQuotation(){ const calc = lastCalculation || calculate(false); let quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]'); quotes.unshift({ ...calc, savedAt:new Date().toLocaleString('en-IN') }); if(quotes.length>100) quotes = quotes.slice(0,100); localStorage.setItem('savedQuotes', JSON.stringify(quotes)); renderSavedQuotes(refs.quoteSearch.value); showToast('Quotation saved'); }
-    function renderSavedQuotes(query = ''){ const q = query.trim().toLowerCase(); const quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]').filter(item => { const hay = [item.customerName, item.customerPhone, item.quoteId, item.plate, item.gauge].join(' ').toLowerCase(); return !q || hay.includes(q); }); refs.quotesList.innerHTML = quotes.length ? quotes.map(item => `<div class="item-card"><strong>${item.quoteId} • ${item.customerName || 'Walk-in Customer'}</strong><small>${item.customerPhone || 'No phone'} • ${item.savedAt} • Total: ₹${item.grandTotal}</small><div class="mini" style="margin-top:6px;">${item.plate} ${item.gauge} × ${item.qty}${item.quoteNotes ? ' • ' + item.quoteNotes : ''}</div><div class="item-actions no-print"><button class="btn-secondary" onclick="loadQuote('${item.quoteId}')">Load</button><button class="btn-accent" onclick="shareQuoteById('${item.quoteId}')">Share</button><button class="btn-primary" onclick="exportQuotePdfById('${item.quoteId}')">PDF</button><button class="btn-danger" onclick="deleteQuote('${item.quoteId}')">Delete</button></div></div>`).join('') : '<div class="item-card"><strong>No saved quotations.</strong><small>Save a quote to see it here.</small></div>'; }
-    window.loadQuote = function(quoteId){ const quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]'); const item = quotes.find(q => q.quoteId === quoteId); if(!item) return; ['customerName','customerPhone','quoteNotes','plate','gauge','qty','angle','angleft','nutbolt','lpatti','rubber','discountPercent','labourCost','transportCost','gstPercent'].forEach(k => { if(refs[k] && item[k] !== undefined) refs[k].value = item[k]; }); refs.gstEnabled.checked = !!item.gstEnabled; updateQuoteMeta(item.quoteId); lastCalculation = item; renderResult(item); showToast('Quotation loaded'); window.scrollTo({ top:0, behavior:'smooth' }); }
-    window.deleteQuote = function(quoteId){ let quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]'); quotes = quotes.filter(q => q.quoteId !== quoteId); localStorage.setItem('savedQuotes', JSON.stringify(quotes)); renderSavedQuotes(refs.quoteSearch.value); showToast('Quotation deleted'); }
+    function renderSavedQuotes(query = ''){ const q = query.trim().toLowerCase(); const quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]').filter(item => { const hay = [item.customerName, item.customerPhone, item.quoteId, item.plate, item.gauge].join(' ').toLowerCase(); return !q || hay.includes(q); }); refs.quotesList.innerHTML = quotes.length ? quotes.map(item => `<div class="item-card"><strong>${item.quoteId} • ${item.customerName || 'Walk-in Customer'}</strong><small>${item.customerPhone || 'No phone'} • ${item.savedAt} • Total: ₹${item.grandTotal}</small><div class="mini" style="margin-top:6px;">${item.plate} ${item.gauge} × ${item.qty}${item.quoteNotes ? ' • ' + item.quoteNotes : ''}</div><div class="item-actions no-print"><button class="btn-secondary" onclick="loadQuoteById('${item.quoteId}')">Load</button><button class="btn-accent" onclick="shareQuoteById('${item.quoteId}')">Share</button><button class="btn-primary" onclick="exportQuotePdfById('${item.quoteId}')">PDF</button><button class="btn-danger" onclick="deleteQuoteById('${item.quoteId}')">Delete</button></div></div>`).join('') : '<div class="item-card"><strong>No saved quotations.</strong><small>Save a quote to see it here.</small></div>'; }
+    function loadQuoteById(quoteId){ const quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]'); const item = quotes.find(q => q.quoteId === quoteId); if(!item) return; ['customerName','customerPhone','quoteNotes','plate','gauge','qty','angle','angleft','nutbolt','lpatti','rubber','discountPercent','labourCost','transportCost','gstPercent'].forEach(k => { if(refs[k] && item[k] !== undefined) refs[k].value = item[k]; }); refs.gstEnabled.checked = !!item.gstEnabled; updateQuoteMeta(item.quoteId); lastCalculation = item; renderResult(item); showToast('Quotation loaded'); window.scrollTo({ top:0, behavior:'smooth' }); }
+    function deleteQuoteById(quoteId){ let quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]'); quotes = quotes.filter(q => q.quoteId !== quoteId); localStorage.setItem('savedQuotes', JSON.stringify(quotes)); renderSavedQuotes(refs.quoteSearch.value); showToast('Quotation deleted'); }
     function clearQuotes(){ localStorage.removeItem('savedQuotes'); renderSavedQuotes(); showToast('All quotations cleared'); }
+    function toggleQuotes(){ const visible = refs.quotesCard.style.display === 'block'; refs.quotesCard.style.display = visible ? 'none' : 'block'; if(!visible) renderSavedQuotes(refs.quoteSearch.value); }
 
     function pdfEscape(text){ return String(text).replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)'); }
     function pdfLine(x, y, text, font='F1', size=11, color='0 0 0'){ return `BT /${font} ${size} Tf ${color} rg 1 0 0 1 ${x} ${y} Tm (${pdfEscape(text)}) Tj ET\n`; }
@@ -301,34 +328,39 @@
     function wrapPdfText(text, maxChars){ const words = String(text).split(/\s+/); const lines=[]; let line=''; words.forEach(w=>{ if((line+' '+w).trim().length > maxChars){ if(line) lines.push(line); line=w; } else line=(line+' '+w).trim(); }); if(line) lines.push(line); return lines; }
     function makePdf(objects){ let pdf = '%PDF-1.4\n'; const offsets=[0]; objects.forEach(obj=>{ offsets[obj.id]=pdf.length; pdf += `${obj.id} 0 obj\n${obj.body}\nendobj\n`; }); const xrefOffset=pdf.length; pdf += `xref\n0 ${objects.length+1}\n0000000000 65535 f \n`; for(let i=1;i<=objects.length;i++) pdf += `${String(offsets[i]).padStart(10,'0')} 00000 n \n`; pdf += `trailer\n<< /Size ${objects.length+1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`; return pdf; }
     function buildBrandedPdf(calc){ const pageW=595, pageH=842, margin=36; let content=''; const brand=appSettings.branding.brandName || 'Bakka Enterprises'; const footer=appSettings.branding.footerText || 'Premium rack quotation generated by Bakka Enterprises'; const companyPhone=appSettings.branding.companyPhone || '';
-      content += pdfRect(0, pageH-110, pageW, 110, '0.09 0.64 0.29'); content += pdfRect(0, pageH-118, pageW, 8, '0.04 0.47 0.20');
-      content += pdfLine(margin, pageH-54, brand, 'F2', 24, '1 1 1'); content += pdfLine(margin, pageH-78, 'Rack Quotation', 'F1', 12, '0.92 0.98 0.94'); content += pdfLine(pageW-180, pageH-54, calc.quoteId, 'F2', 14, '1 1 1'); content += pdfLine(pageW-180, pageH-76, new Date().toLocaleString('en-IN'), 'F1', 10, '0.92 0.98 0.94');
-      const boxY = pageH-200; content += pdfRect(margin, boxY, pageW-margin*2, 62, '0.96 0.99 0.97'); content += pdfStrokeRect(margin, boxY, pageW-margin*2, 62, '0.82 0.90 0.85', 0.8); content += pdfLine(margin+12, boxY+40, 'Customer', 'F2', 11, '0.09 0.64 0.29'); content += pdfLine(margin+12, boxY+22, calc.customerName || 'Walk-in Customer', 'F2', 14, '0 0 0'); content += pdfLine(pageW/2, boxY+22, calc.customerPhone ? ('Phone: '+calc.customerPhone) : 'Phone: —', 'F1', 11, '0 0 0');
-      const tableTop = pageH-300; content += pdfRect(margin, tableTop, pageW-margin*2, 26, '0.09 0.64 0.29'); content += pdfLine(margin+10, tableTop+8, 'Item', 'F2', 11, '1 1 1'); content += pdfLine(margin+260, tableTop+8, 'Details', 'F2', 11, '1 1 1'); content += pdfLine(pageW-120, tableTop+8, 'Amount', 'F2', 11, '1 1 1');
-      const rows=[ ['Plate', `${calc.plate} (${calc.gauge}) • ${calc.qty} × ${currency.format(calc.plateRate)}`, currency.format(calc.plateTotal)], ['Angle', `${calc.angleft} ft × ${currency.format(calc.angleRate)}`, currency.format(calc.angleTotal)], ['Nut Bolt', `${calc.nutbolt} × ${currency.format(appSettings.rates.nutboltRate)}`, currency.format(calc.nutboltTotal)], ['L Patti', `${calc.lpatti} × ${currency.format(appSettings.rates.lpattiRate)}`, currency.format(calc.lpattiTotal)], ['Rubber', `${calc.rubber} × ${currency.format(appSettings.rates.rubberRate)}`, currency.format(calc.rubberTotal)], ['Material Subtotal', 'Before discount', currency.format(calc.materialSubtotal)], ['Discount', `${calc.discountPercent}%`, '- ' + currency.format(calc.discountAmount)], ['GST Base', 'Materials after discount only', currency.format(calc.taxableMaterialValue)], ['GST', calc.gstEnabled ? `${calc.gstPercent}% on materials` : 'Off', currency.format(calc.gstAmount)], ['Labour Cost', 'Excluded from GST', currency.format(calc.labourCost)], ['Transport Cost', 'Excluded from GST', currency.format(calc.transportCost)] ];
-      let y = tableTop-26; rows.forEach((row, idx)=>{ if(idx%2===0) content += pdfRect(margin, y, pageW-margin*2, 26, '0.985 0.995 0.987'); content += pdfStrokeRect(margin, y, pageW-margin*2, 26, '0.90 0.94 0.91', 0.2); content += pdfLine(margin+10, y+8, row[0], 'F2', 10.2, '0 0 0'); content += pdfLine(margin+110, y+8, row[1], 'F1', 9.6, '0.20 0.23 0.28'); const amtX=pageW-margin-10-pdfTextWidth(row[2], 10); content += pdfLine(amtX, y+8, row[2], 'F2', 10.2, '0 0 0'); y -= 26; });
-      const totalsX = pageW-220, totalsW = 184, totalsY = y-10; content += pdfRect(totalsX, totalsY, totalsW, 116, '0.96 0.99 0.97'); content += pdfStrokeRect(totalsX, totalsY, totalsW, 116, '0.82 0.90 0.85', 0.8); const totalRows=[ ['GST Base', currency.format(calc.taxableMaterialValue)], ['GST', currency.format(calc.gstAmount)], ['Labour', currency.format(calc.labourCost)], ['Transport', currency.format(calc.transportCost)] ]; let ty=totalsY+88; totalRows.forEach(r=>{ content += pdfLine(totalsX+12, ty, r[0], 'F1', 10, '0.20 0.23 0.28'); content += pdfLine(totalsX+totalsW-12-pdfTextWidth(r[1], 10), ty, r[1], 'F2', 10.5, '0 0 0'); ty -= 18; }); content += pdfRect(totalsX, totalsY+6, totalsW, 26, '0.09 0.64 0.29'); content += pdfLine(totalsX+12, totalsY+14, 'Grand Total', 'F2', 12, '1 1 1'); const grand=currency.format(calc.grandTotal); const gx=totalsX+totalsW-12-pdfTextWidth(grand,12); content += pdfLine(gx, totalsY+14, grand, 'F2', 12, '1 1 1');
-      const notesY = totalsY-90; content += pdfRect(margin, notesY, pageW-margin*2, 70, '0.99 0.99 1'); content += pdfStrokeRect(margin, notesY, pageW-margin*2, 70, '0.85 0.88 0.94', 0.8); content += pdfLine(margin+12, notesY+48, 'Notes', 'F2', 11, '0.05 0.33 0.66'); const noteLines=wrapPdfText(calc.quoteNotes || 'Labour cost and transport cost are excluded from GST calculation.', 78); noteLines.slice(0,2).forEach((ln, idx)=>{ content += pdfLine(margin+12, notesY+30-idx*16, ln, 'F1', 10, '0.20 0.23 0.28'); });
+      content += pdfRect(0, pageH-110, pageW, 110, '0.23 0.51 0.96'); content += pdfRect(0, pageH-118, pageW, 8, '0.15 0.39 0.92');
+      content += pdfLine(margin, pageH-54, brand, 'F2', 24, '1 1 1'); content += pdfLine(margin, pageH-78, 'Rack Quotation', 'F1', 12, '0.93 0.97 1'); content += pdfLine(pageW-180, pageH-54, calc.quoteId, 'F2', 14, '1 1 1'); content += pdfLine(pageW-180, pageH-76, new Date().toLocaleString('en-IN'), 'F1', 10, '0.93 0.97 1');
+      const boxY = pageH-200; content += pdfRect(margin, boxY, pageW-margin*2, 62, '0.95 0.98 1'); content += pdfStrokeRect(margin, boxY, pageW-margin*2, 62, '0.80 0.89 1', 0.8); content += pdfLine(margin+12, boxY+40, 'Customer', 'F2', 11, '0.15 0.39 0.92'); content += pdfLine(margin+12, boxY+22, calc.customerName || 'Walk-in Customer', 'F2', 14, '0 0 0'); content += pdfLine(pageW/2, boxY+22, calc.customerPhone ? ('Phone: '+calc.customerPhone) : 'Phone: —', 'F1', 11, '0 0 0');
+      const tableTop = pageH-300; content += pdfRect(margin, tableTop, pageW-margin*2, 26, '0.23 0.51 0.96'); content += pdfLine(margin+10, tableTop+8, 'Item', 'F2', 11, '1 1 1'); content += pdfLine(margin+260, tableTop+8, 'Details', 'F2', 11, '1 1 1'); content += pdfLine(pageW-120, tableTop+8, 'Amount', 'F2', 11, '1 1 1');
+      const rows=[ ['Plate', `${calc.plate} (${calc.gauge}) • ${calc.qty} × ${currency.format(calc.plateRate)}`, currency.format(calc.plateTotal)], ['Angle', `${calc.angleft} ft × ${currency.format(calc.angleRate)}`, currency.format(calc.angleTotal)], ['Nut Bolt', `${calc.nutbolt} × ${currency.format(appSettings.rates.nutboltRate)}`, currency.format(calc.nutboltTotal)], ['L Patti', `${calc.lpatti} × ${currency.format(appSettings.rates.lpattiRate)}`, currency.format(calc.lpattiTotal)], ['Rubber', `${calc.rubber} × ${currency.format(appSettings.rates.rubberRate)}`, currency.format(calc.rubberTotal)], ['Material Subtotal', 'Before discount', currency.format(calc.materialSubtotal)], ['Discount', `${calc.discountPercent}%`, '- ' + currency.format(calc.discountAmount)], ['GST Base', 'Materials after discount only', currency.format(calc.taxableMaterialValue)], ['GST', calc.gstEnabled ? `${calc.gstPercent}% on materials` : 'Off', currency.format(calc.gstAmount)], ['Labour Cost', 'Outside GST', currency.format(calc.labourCost)], ['Transport Cost', 'Outside GST', currency.format(calc.transportCost)] ];
+      let y = tableTop-26; rows.forEach((row, idx)=>{ if(idx%2===0) content += pdfRect(margin, y, pageW-margin*2, 26, '0.985 0.992 1'); content += pdfStrokeRect(margin, y, pageW-margin*2, 26, '0.88 0.93 1', 0.2); content += pdfLine(margin+10, y+8, row[0], 'F2', 10.2, '0 0 0'); content += pdfLine(margin+110, y+8, row[1], 'F1', 9.6, '0.20 0.23 0.28'); const amtX=pageW-margin-10-pdfTextWidth(row[2], 10); content += pdfLine(amtX, y+8, row[2], 'F2', 10.2, '0 0 0'); y -= 26; });
+      const totalsX = pageW-220, totalsW = 184, totalsY = y-10; content += pdfRect(totalsX, totalsY, totalsW, 116, '0.95 0.98 1'); content += pdfStrokeRect(totalsX, totalsY, totalsW, 116, '0.80 0.89 1', 0.8); const totalRows=[ ['GST Base', currency.format(calc.taxableMaterialValue)], ['GST', currency.format(calc.gstAmount)], ['Labour', currency.format(calc.labourCost)], ['Transport', currency.format(calc.transportCost)] ]; let ty=totalsY+88; totalRows.forEach(r=>{ content += pdfLine(totalsX+12, ty, r[0], 'F1', 10, '0.20 0.23 0.28'); content += pdfLine(totalsX+totalsW-12-pdfTextWidth(r[1], 10), ty, r[1], 'F2', 10.5, '0 0 0'); ty -= 18; }); content += pdfRect(totalsX, totalsY+6, totalsW, 26, '0.23 0.51 0.96'); content += pdfLine(totalsX+12, totalsY+14, 'Grand Total', 'F2', 12, '1 1 1'); const grand=currency.format(calc.grandTotal); const gx=totalsX+totalsW-12-pdfTextWidth(grand,12); content += pdfLine(gx, totalsY+14, grand, 'F2', 12, '1 1 1');
+      const notesY = totalsY-90; content += pdfRect(margin, notesY, pageW-margin*2, 70, '0.99 0.99 1'); content += pdfStrokeRect(margin, notesY, pageW-margin*2, 70, '0.85 0.90 0.98', 0.8); content += pdfLine(margin+12, notesY+48, 'Notes', 'F2', 11, '0.15 0.39 0.92'); const noteLines=wrapPdfText(calc.quoteNotes || 'Labour cost and transport cost are excluded from GST calculation.', 78); noteLines.slice(0,2).forEach((ln, idx)=>{ content += pdfLine(margin+12, notesY+30-idx*16, ln, 'F1', 10, '0.20 0.23 0.28'); });
       content += pdfLine(margin, 40, footer, 'F1', 10, '0.30 0.35 0.40'); if(companyPhone) content += pdfLine(pageW-margin-pdfTextWidth('Phone: '+companyPhone,10), 40, 'Phone: '+companyPhone, 'F1', 10, '0.30 0.35 0.40');
       return makePdf([{id:1,body:'<< /Type /Catalog /Pages 2 0 R >>'},{id:2,body:'<< /Type /Pages /Kids [3 0 R] /Count 1 >>'},{id:3,body:'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>'},{id:4,body:`<< /Length ${content.length} >>\nstream\n${content}\nendstream`},{id:5,body:'<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>'},{id:6,body:'<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>'}]); }
-    function exportPdf(calc = null){ const item = calc || lastCalculation || calculate(false); const pdf = buildBrandedPdf(item); const blob = new Blob([pdf], { type:'application/pdf' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${(item.customerName || 'quotation').replace(/[^a-z0-9]/gi,'_').toLowerCase()}_${item.quoteId}.pdf`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1200); showToast('Beautiful PDF exported'); }
-    window.exportQuotePdfById = function(quoteId){ const quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]'); const item = quotes.find(q => q.quoteId === quoteId); if(item) exportPdf(item); }
-    function toShareText(calc){ return [appSettings.branding.brandName || 'Bakka Enterprises', calc.quoteId, calc.customerName ? `Customer: ${calc.customerName}` : null, calc.customerPhone ? `Phone: ${calc.customerPhone}` : null, `Plate: ${calc.plate} (${calc.gauge})`, `Qty: ${calc.qty}`, `Material Subtotal: ₹${calc.materialSubtotal}`, `Discount: ₹${calc.discountAmount}`, `GST Base (materials only): ₹${calc.taxableMaterialValue}`, `GST: ₹${calc.gstAmount}`, `Labour Cost: ₹${calc.labourCost}`, `Transport Cost: ₹${calc.transportCost}`, `Grand Total: ₹${calc.grandTotal}`, calc.quoteNotes ? `Notes: ${calc.quoteNotes}` : null, '', appSettings.branding.footerText || 'Premium rack quotation generated by Bakka Enterprises'].filter(Boolean).join('\n'); }
-    async function shareResult(calc = null){ const item = calc || lastCalculation || calculate(false); const text = toShareText(item); try { if(navigator.share){ await navigator.share({ title:item.quoteId || 'Quotation', text }); return; } if(navigator.clipboard){ await navigator.clipboard.writeText(text); showToast('Copied to clipboard'); return; } } catch(e){} alert(text); }
-    window.shareQuoteById = function(quoteId){ const quotes = JSON.parse(localStorage.getItem('savedQuotes') || '[]'); const item = quotes.find(q => q.quoteId === quoteId); if(item) shareResult(item); }
-    function shareWhatsApp(){ const item = lastCalculation || calculate(false); const url = 'https://wa.me/?text=' + encodeURIComponent(toShareText(item)); window.open(url, '_blank'); }
-    function printQuotation(){ if(!lastCalculation) calculate(false); window.print(); }
+    async function exportPdf(calc = null){ const item = calc || lastCalculation || calculate(false); const pdf = buildBrandedPdf(item); const blob = new Blob([pdf], { type:'application/pdf' }); const fileName = `${(item.customerName || 'quotation').replace(/[^a-z0-9]/gi,'_').toLowerCase()}_${item.quoteId}.pdf`;
+      try {
+        const file = new File([blob], fileName, { type:'application/pdf' });
+        if(navigator.canShare && navigator.canShare({ files:[file] }) && navigator.share){
+          await navigator.share({ files:[file], title:item.quoteId || 'Quotation', text:'Quotation PDF' });
+          showToast('PDF shared');
+          return;
+        }
+      } catch(e) {}
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = fileName; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1200); showToast('PDF downloaded'); }
+    async function shareResult(calc = null){ const item = calc || lastCalculation || calculate(false); const text = [appSettings.branding.brandName || 'Bakka Enterprises', item.quoteId, item.customerName ? `Customer: ${item.customerName}` : null, item.customerPhone ? `Phone: ${item.customerPhone}` : null, `Plate: ${item.plate} (${item.gauge})`, `Qty: ${item.qty}`, `Material Subtotal: ₹${item.materialSubtotal}`, `Discount: ₹${item.discountAmount}`, `GST Base: ₹${item.taxableMaterialValue}`, `GST: ₹${item.gstAmount}`, `Labour Cost: ₹${item.labourCost}`, `Transport Cost: ₹${item.transportCost}`, `Grand Total: ₹${item.grandTotal}`, item.quoteNotes ? `Notes: ${item.quoteNotes}` : null, '', appSettings.branding.footerText || 'Premium rack quotation generated by Bakka Enterprises'].filter(Boolean).join('\n');
+      try { if(navigator.share){ await navigator.share({ title:item.quoteId || 'Quotation', text }); return; } if(navigator.clipboard){ await navigator.clipboard.writeText(text); showToast('Copied to clipboard'); return; } } catch(e){}
+      alert(text);
+    }
     function resetForm(){ fields.forEach(id => { refs[id].value = defaults[id]; persist(id, defaults[id]); }); refs.gstEnabled.checked = defaults.gstEnabled === 'true'; refs.autoCalc.checked = defaults.autoCalc === 'true'; persist('gstEnabled', defaults.gstEnabled); persist('autoCalc', defaults.autoCalc); updateQuoteMeta(); refs.result.innerHTML = '<div class="placeholder">Fill the details and tap <strong>Calculate</strong> to see the price.</div>'; lastCalculation = null; showToast('Form reset to default'); }
-    function toggleQuotes(){ const visible = refs.quotesCard.style.display === 'block'; refs.quotesCard.style.display = visible ? 'none' : 'block'; if(!visible) renderSavedQuotes(refs.quoteSearch.value); }
-    function toggleHistory(){ const visible = refs.savedQuotesCard.style.display === 'block'; refs.savedQuotesCard.style.display = visible ? 'none' : 'block'; if(!visible) renderHistory(); }
     function exportBackup(){ const data = { settings: appSettings, fields: Object.fromEntries(fields.map(k => [k, refs[k]?.value ?? ''])), gstEnabled: refs.gstEnabled.checked, autoCalc: refs.autoCalc.checked, calcHistory: JSON.parse(localStorage.getItem('calcHistory') || '[]'), savedQuotes: JSON.parse(localStorage.getItem('savedQuotes') || '[]') }; refs.backupData.value = JSON.stringify(data, null, 2); showToast('Backup JSON generated'); }
-    function restoreBackup(){ try { const data = JSON.parse(refs.backupData.value); if(data.settings){ appSettings = data.settings; saveSettings(); } if(data.fields){ Object.entries(data.fields).forEach(([k,v]) => { if(refs[k]) { refs[k].value = v; persist(k,v); } }); } if(typeof data.gstEnabled === 'boolean'){ refs.gstEnabled.checked = data.gstEnabled; persist('gstEnabled', String(data.gstEnabled)); } if(typeof data.autoCalc === 'boolean'){ refs.autoCalc.checked = data.autoCalc; persist('autoCalc', String(data.autoCalc)); } if(Array.isArray(data.calcHistory)) localStorage.setItem('calcHistory', JSON.stringify(data.calcHistory)); if(Array.isArray(data.savedQuotes)) localStorage.setItem('savedQuotes', JSON.stringify(data.savedQuotes)); populatePlateOptions(); populateAngleOptions(); renderAdminTables(); renderHistory(); renderSavedQuotes(); updateQuoteMeta(); maybeAutoCalculate(); showToast('Backup restored'); } catch(e){ showToast('Invalid backup JSON'); } }
+    function restoreBackup(){ try { const data = JSON.parse(refs.backupData.value); if(data.settings){ appSettings = data.settings; saveSettings(); } if(data.fields){ Object.entries(data.fields).forEach(([k,v]) => { if(refs[k]) { refs[k].value = v; persist(k,v); } }); } if(typeof data.gstEnabled === 'boolean'){ refs.gstEnabled.checked = data.gstEnabled; persist('gstEnabled', String(data.gstEnabled)); } if(typeof data.autoCalc === 'boolean'){ refs.autoCalc.checked = data.autoCalc; persist('autoCalc', String(data.autoCalc)); } if(Array.isArray(data.calcHistory)) localStorage.setItem('calcHistory', JSON.stringify(data.calcHistory)); if(Array.isArray(data.savedQuotes)) localStorage.setItem('savedQuotes', JSON.stringify(data.savedQuotes)); populatePlateOptions(); populateAngleOptions(); renderAdminTables(); renderSavedQuotes(); updateQuoteMeta(); maybeAutoCalculate(); showToast('Backup restored'); } catch(e){ showToast('Invalid backup JSON'); } }
     async function installApp(){ if(!deferredPrompt){ showToast('Use browser menu to install this app'); return; } deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; }
     function registerSW(){ if('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(() => {}); }
     function bindTabs(){ document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active')); btn.classList.add('active'); $(btn.dataset.tab).classList.add('active'); })); }
-    function bindEvents(){ refs.darkToggle.addEventListener('click', () => { const dark = document.body.classList.toggle('dark'); refs.darkToggle.textContent = dark ? '☀️' : '🌙'; persist('darkMode', String(dark)); }); refs.installBtn.addEventListener('click', installApp); refs.calcBtn.addEventListener('click', () => calculate(true)); refs.resetBtn.addEventListener('click', resetForm); refs.shareBtn.addEventListener('click', () => shareResult()); refs.waBtn.addEventListener('click', shareWhatsApp); refs.saveQuoteBtn.addEventListener('click', saveQuotation); refs.printBtn.addEventListener('click', printQuotation); refs.pdfBtn.addEventListener('click', () => exportPdf()); refs.quotesBtn.addEventListener('click', toggleQuotes); refs.clearQuotesBtn.addEventListener('click', clearQuotes); refs.historyBtn.addEventListener('click', toggleHistory); refs.quoteSearch.addEventListener('input', () => renderSavedQuotes(refs.quoteSearch.value), { passive: true }); refs.adminModalTrigger.addEventListener('click', openAdminModal); refs.closeAdminBtn.addEventListener('click', closeAdminModal); refs.adminCloseBtn.addEventListener('click', closeAdminModal); refs.saveAdminBtn.addEventListener('click', applyAdminChanges); refs.addPlateBtn.addEventListener('click', addPlateRow); refs.resetPricesBtn.addEventListener('click', resetPrices); refs.exportBackupBtn.addEventListener('click', exportBackup); refs.restoreBackupBtn.addEventListener('click', restoreBackup); refs.adminModal.addEventListener('click', (e)=>{ if(e.target===refs.adminModal) closeAdminModal(); }); refs.gstEnabled.addEventListener('change', ()=>{ persist('gstEnabled', String(refs.gstEnabled.checked)); maybeAutoCalculate(); }); refs.autoCalc.addEventListener('change', ()=>persist('autoCalc', String(refs.autoCalc.checked))); fields.forEach(id => { refs[id].addEventListener('input', (e) => { persist(id, e.target.value); maybeAutoCalculate(); }, { passive:true }); refs[id].addEventListener('change', (e) => { persist(id, e.target.value); maybeAutoCalculate(); }, { passive:true }); }); window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; showToast('App install available'); }); }
-    function init(){ loadSettings(); populatePlateOptions(); populateAngleOptions(); loadPersistedValues(); updateQuoteMeta(); renderAdminTables(); renderSavedQuotes(); renderHistory(); bindTabs(); bindEvents(); if(refs.autoCalc.checked) calculate(false); registerSW(); }
-    window.loadQuote = loadQuote; window.deleteQuote = deleteQuote; window.shareQuoteById = shareQuoteById; window.exportQuotePdfById = exportQuotePdfById;
+    function bindEvents(){ refs.darkToggle.addEventListener('click', () => { const dark = document.body.classList.toggle('dark'); refs.darkToggle.textContent = dark ? '☀️' : '🌙'; persist('darkMode', String(dark)); }); refs.installBtn.addEventListener('click', installApp); refs.calcBtn.addEventListener('click', () => calculate(true)); refs.resetBtn.addEventListener('click', resetForm); refs.shareBtn.addEventListener('click', () => shareResult()); refs.saveQuoteBtn.addEventListener('click', saveQuotation); refs.pdfBtn.addEventListener('click', () => exportPdf()); refs.quotesBtn.addEventListener('click', toggleQuotes); refs.clearQuotesBtn.addEventListener('click', clearQuotes); refs.quoteSearch.addEventListener('input', () => renderSavedQuotes(refs.quoteSearch.value), { passive:true }); refs.adminModalTrigger.addEventListener('click', openAdminModal); refs.closeAdminBtn.addEventListener('click', closeAdminModal); refs.adminCloseBtn.addEventListener('click', closeAdminModal); refs.saveAdminBtn.addEventListener('click', applyAdminChanges); refs.addPlateBtn.addEventListener('click', addPlateRow); refs.resetPricesBtn.addEventListener('click', resetPrices); refs.exportBackupBtn.addEventListener('click', exportBackup); refs.restoreBackupBtn.addEventListener('click', restoreBackup); refs.adminModal.addEventListener('click', (e)=>{ if(e.target===refs.adminModal) closeAdminModal(); }); refs.gstEnabled.addEventListener('change', ()=>{ persist('gstEnabled', String(refs.gstEnabled.checked)); maybeAutoCalculate(); }); refs.autoCalc.addEventListener('change', ()=>persist('autoCalc', String(refs.autoCalc.checked))); fields.forEach(id => { refs[id].addEventListener('input', (e) => { persist(id, e.target.value); maybeAutoCalculate(); }, { passive:true }); refs[id].addEventListener('change', (e) => { persist(id, e.target.value); maybeAutoCalculate(); }, { passive:true }); }); window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; showToast('App install available'); }); }
+    function init(){ loadSettings(); populatePlateOptions(); populateAngleOptions(); loadPersistedValues(); updateQuoteMeta(); renderAdminTables(); renderSavedQuotes(); bindTabs(); bindEvents(); if(refs.autoCalc.checked) calculate(false); registerSW(); }
+    window.loadQuoteById = loadQuoteById; window.deleteQuoteById = deleteQuoteById; window.shareQuoteById = (id) => { const q = JSON.parse(localStorage.getItem('savedQuotes') || '[]').find(x => x.quoteId === id); if(q) shareResult(q); }; window.exportQuotePdfById = (id) => { const q = JSON.parse(localStorage.getItem('savedQuotes') || '[]').find(x => x.quoteId === id); if(q) exportPdf(q); };
     window.addEventListener('DOMContentLoaded', init, { once:true });
   </script>
 </body>
