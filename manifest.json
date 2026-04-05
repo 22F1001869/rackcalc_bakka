@@ -1,7 +1,7 @@
 {
   "name": "Bakka Enterprises Quotations",
   "short_name": "Bakka Quote",
-  "description": "Compact quotation app with Bakka Enterprises letterhead PDF and offline support.",
+  "description": "Compact quotation app with smarter top summary visibility and offline support.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f8fafc",
