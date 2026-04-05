@@ -1,11 +1,12 @@
-RackCalc Pro • Bakka Enterprises Edition
-=======================================
+Bakka Enterprises • Compact Quotation Workspace (Fixed V2)
+=========================================================
 
-This build includes:
-- Profit / Margin removed
-- Labour Cost added
-- Transport Cost added
-- GST applied only on materials after discount
-- Labour and transport excluded from GST base
-- Beautiful branded PDF quotation
-- Editable prices and branding from Admin Settings
+Fixes in this build:
+- PDF text is sanitized to ASCII-safe output to avoid junk characters
+- Plate line in PDF now uses '-' and 'x' instead of unsupported symbols
+- The word 'Letterhead' has been removed from PDF and replaced with 'Address'
+- Settings panel is a fully hidden full-screen overlay and opens only via the settings button
+- Letterhead PDF still includes:
+  * Bakka Enterprises
+  * 21, Madani Estate, LBS Road, Sonpur, Bhandup West, Mumbai-400078
+  * Prop. Mobile: 9322013155
