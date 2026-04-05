@@ -1,7 +1,7 @@
 {
   "name": "RackCalc Pro - Bakka Enterprises",
   "short_name": "Bakka Quote",
-  "description": "Compact blue rack quotation app with labour and transport excluded from GST base.",
+  "description": "Rack Quotation app Bakka.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f6faff",
