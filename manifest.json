@@ -1,11 +1,11 @@
 {
-  "name": "Bakka Enterprises Rack Quotes",
-  "short_name": "Bakka Quote",
-  "description": "Rack quotation app for Bakka",
+  "name": "Bakka Enterprises Atlas Quote Studio Teal",
+  "short_name": "Bakka Atlas",
+  "description": "Teal edition with tighter PDF spacing and authorized signatory area.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#0f172a",
+  "background_color": "#eef5f3",
+  "theme_color": "#40786C",
   "orientation": "portrait-primary",
   "icons": [
     {

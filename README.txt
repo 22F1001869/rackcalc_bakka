@@ -1,8 +1,10 @@
-Bakka Enterprises • Compact Quotation Workspace (Fixed V3)
-=========================================================
+Bakka Enterprises • Atlas Quote Studio Teal V2
+==============================================
 
-Enhancement in this build:
-- Grand Total / GST Base / Quote ID summary strip now hides on downward scroll
-- Summary strip becomes visible when Calculate is pressed
-- Summary strip hides again when the user scrolls down for more working space
-- Previous PDF and settings fixes are retained
+This build updates the unique Atlas app with:
+- Teal green theme (#40786C / RGB 64,120,108) across UI and PDF
+- PDF layout tightened so BAKKA ENTERPRISES header is closer to the Address block
+- Customer block moved closer to Address block
+- Rack strips moved closer to Customer block
+- Bottom area reserved for an Authorized Signatory line in PDF
+- Existing rack-wise quotation logic retained
