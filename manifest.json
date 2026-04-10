@@ -1,7 +1,7 @@
 {
-  "name": "Bakka Enterprises Atlas Quote Studio Teal",
-  "short_name": "Bakka Atlas",
-  "description": "Teal edition with tighter PDF spacing and authorized signatory area.",
+  "name": "Bakka Enterprises Quote Studio Teal",
+  "short_name": "Bakka",
+  "description": "Teal quote app with compact UI, PDF export and offline support.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#eef5f3",
